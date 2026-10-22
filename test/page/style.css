@@ -1,0 +1,70 @@
+:root { --bg: #0d1117; --panel: #161b22; --border: #30363d; --text: #e6edf3; --muted: #8b949e; --bad: #f85149; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; min-height: 100vh; font: 15px/1.5 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--text); -webkit-font-smoothing: antialiased;
+       background: radial-gradient(900px 500px at 85% -10%, #1b2742 0, transparent 60%), radial-gradient(700px 400px at -10% 110%, #2d1b33 0, transparent 55%), var(--bg); }
+.promo { background: var(--panel); border-bottom: 1px solid var(--border); color: #c9d1d9; text-align: center; font-size: 13px; padding: 8px; }
+header { display: flex; align-items: center; gap: 36px; max-width: 1180px; margin: 0 auto; padding: 18px 28px; }
+.brand { font-weight: 800; font-size: 20px; letter-spacing: -.03em; } .brand span { color: #f97316; }
+nav { display: flex; gap: 26px; color: var(--muted); flex: 1; } nav b { color: var(--text); font-weight: 600; }
+.search { width: 230px; padding: 8px 14px; border-radius: 999px; background: var(--panel); border: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+#cart { position: relative; display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); font-weight: 600; background: var(--panel); }
+#count { min-width: 22px; height: 22px; padding: 0 6px; border-radius: 11px; background: var(--text); color: var(--bg); font-size: 12px; display: grid; place-items: center; }
+.crumbs { max-width: 1180px; margin: 0 auto; padding: 4px 28px 0; color: var(--muted); font-size: 13px; }
+main { max-width: 1180px; margin: 14px auto 0; padding: 0 28px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; }
+.stage { background: linear-gradient(160deg, #1a2029, #10151c); border: 1px solid var(--border); border-radius: 24px; height: 470px; display: grid; place-items: center; perspective: 1100px; }
+.kb { width: 470px; padding: 20px; border-radius: 20px; background: linear-gradient(#3b414c, #20242b); transform: rotateX(38deg) rotateZ(-6deg); box-shadow: 0 60px 50px -20px #000a, 0 2px 0 #5a606c inset; }
+.row { display: flex; gap: 4px; margin-bottom: 4px; }
+.row i { height: 26px; border-radius: 5px; background: linear-gradient(#eeeef2, #cfd0d8); box-shadow: 0 3px 0 #8e909b; }
+.row i.m { background: linear-gradient(#8b8e99, #737683); box-shadow: 0 3px 0 #555863; }
+.row i.a { background: linear-gradient(#fb923c, #f97316); box-shadow: 0 3px 0 #c2570c; }
+.thumbs { display: flex; gap: 10px; margin-top: 12px; }
+.thumbs div { width: 78px; height: 56px; border-radius: 12px; background: var(--panel); border: 2px solid transparent; }
+.thumbs div:first-child { border-color: var(--text); }
+.stars { color: #f59e0b; letter-spacing: 1px; } .stars small { color: var(--muted); letter-spacing: 0; margin-left: 6px; }
+h1 { margin: 6px 0 4px; font-size: 38px; line-height: 1.1; letter-spacing: -.035em; }
+.muted { color: var(--muted); }
+.price { display: flex; align-items: baseline; gap: 12px; margin: 18px 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+.price s { color: #6e7681; font-size: 18px; font-weight: 400; } .price em { font-style: normal; font-size: 13px; color: #3fb950; background: #12261a; border: 1px solid #1f4d2b; padding: 2px 8px; border-radius: 6px; }
+.opts { margin: 16px 0; } .opts label { display: block; font-weight: 600; margin-bottom: 8px; }
+.chips { display: flex; gap: 8px; } .chips span { padding: 8px 14px; border-radius: 10px; border: 1px solid var(--border); font-size: 14px; }
+.chips span.on { border-color: var(--text); box-shadow: 0 0 0 1px var(--text); }
+.sw { display: flex; gap: 10px; } .sw i { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--bg); box-shadow: 0 0 0 1px var(--border); } .sw i.on { box-shadow: 0 0 0 2px var(--text); }
+.buy { display: flex; gap: 10px; margin-top: 18px; }
+button { font: inherit; font-weight: 600; padding: 15px 26px; border: 0; border-radius: 14px; background: var(--text); color: var(--bg); cursor: pointer; flex: 1; transition: transform .1s; }
+button:active { transform: translateY(1px); }
+.heart { width: 52px; border-radius: 14px; border: 1px solid var(--border); display: grid; place-items: center; font-size: 20px; }
+.perks { margin-top: 14px; color: var(--muted); font-size: 13px; display: flex; gap: 18px; }
+#count.pop { animation: pop .35s ease; }
+@keyframes pop { 40% { transform: scale(1.4); } }
+/* cart drawer */
+#veil { position: fixed; inset: 0; background: #0008; opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 9; }
+#drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); background: #12171e; border-left: 1px solid var(--border); box-shadow: -30px 0 60px #0009; transform: translateX(105%); transition: transform .3s cubic-bezier(.2,.8,.2,1); z-index: 10; display: flex; flex-direction: column; }
+body.open #drawer { transform: none; } body.open #veil { opacity: 1; pointer-events: auto; }
+.dh { display: flex; justify-content: space-between; align-items: center; padding: 20px 22px; border-bottom: 1px solid var(--border); font-weight: 700; font-size: 18px; } .dh span { color: var(--muted); font-size: 22px; font-weight: 400; cursor: pointer; }
+.dbody { flex: 1; padding: 22px; } .df { padding: 22px; border-top: 1px solid var(--border); }
+.line { display: flex; gap: 14px; align-items: center; } .line .ph { width: 74px; height: 74px; border-radius: 14px; background: linear-gradient(160deg, #3b414c, #1a1e25); flex: none; }
+.line b { display: block; } .line small { color: var(--muted); } .line .p { margin-left: auto; font-weight: 700; }
+.empty { text-align: center; padding-top: 90px; color: var(--muted); } .empty b { display: block; color: var(--text); font-size: 20px; margin-bottom: 8px; } .empty .ic { font-size: 40px; margin-bottom: 14px; }
+.dbody.lost { display: flex; flex-direction: column; }
+.dbody.lost .empty.after { padding-top: 6px; } .empty.after .ic { display: none; } .empty.after b { font-size: 16px; margin-bottom: 4px; }
+#count.bad { background: var(--bad); color: #fff; }
+.sub { display: flex; justify-content: space-between; margin-bottom: 14px; font-weight: 600; } .df button { width: 100%; }
+@media (max-width: 960px) { main { grid-template-columns: 1fr; gap: 14px; margin-top: 4px; } nav, .search, .opts, .perks, .thumbs, .desc, .crumbs { display: none; } header { gap: 16px; padding: 12px 20px; } .brand { flex: 1; }
+  .stage { height: 240px; } .kb { width: 330px; } h1 { font-size: 28px; margin: 2px 0; } .price { margin: 6px 0 12px; font-size: 26px; } .buy { margin-top: 0; } }
+
+/* the error state after the stale sync: an inline alert like a real shop's, with the item that was lost */
+.dbody.lost { display: flex; flex-direction: column; }
+.alert { margin-bottom: 18px; padding: 22px; animation: alertIn .28s ease-out; border-radius: 14px; background: linear-gradient(180deg, #2d1418, #1e1114); border: 1px solid #f8514973; box-shadow: 0 18px 44px -22px #f8514999; }
+.alert .top { display: flex; gap: 14px; align-items: center; }
+.alert .bang { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--bad); color: #fff; font-size: 26px; font-weight: 800; line-height: 1; box-shadow: 0 0 0 6px #f8514933; }
+.alert b { display: block; color: #fff; font-size: 21px; font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
+.alert small { display: block; margin-top: 4px; font-size: 15px; line-height: 1.35; color: #e0bdb9; }
+.alert .gone { display: flex; gap: 12px; align-items: center; margin: 18px 0; padding: 12px; border-radius: 12px; background: #0000003a; border: 1px dashed #f8514966; }
+.alert .gone .ph { width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(160deg, #3b414c, #1a1e25); opacity: .55; flex: none; }
+.alert .gone b { font-size: 16px; font-weight: 600; color: #e6edf3b3; text-decoration: line-through; text-decoration-color: var(--bad); }
+.alert .gone small { margin: 0; font-size: 14px; color: #9aa4ae; text-decoration: line-through; }
+.alert .gone .tag { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--bad); border: 1px solid #f8514999; border-radius: 999px; padding: 3px 10px; }
+.alert .retry { display: block; width: 100%; padding: 13px; border-radius: 12px; background: var(--bad); color: #fff; text-align: center; font-weight: 700; font-size: 15px; }
+@keyframes alertIn { from { opacity: 0; transform: translateY(-10px); } }
+button:disabled { opacity: .32; cursor: not-allowed; }
